@@ -1,12 +1,23 @@
-import { defineNumberComponent } from "@latticexyz/std-client";
+import { defineBoolComponent, defineCoordComponent } from "@latticexyz/std-client";
+import { overridableComponent } from "@latticexyz/recs";
 import { world } from "./world";
 
 export const contractComponents = {
-  Counter: defineNumberComponent(world, {
+  Movable: defineBoolComponent(world, {
     metadata: {
-      contractId: "component.Counter",
+      contractId: "component.Movable",
     },
   }),
+  Player: overridableComponent(defineBoolComponent(world, {
+    metadata: {
+      contractId: "component.Player",
+    },
+  })),
+  Position: overridableComponent(defineCoordComponent(world, {
+    metadata: {
+      contractId: "component.Position",
+    },
+  })),
 };
 
 export const clientComponents = {};

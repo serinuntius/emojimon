@@ -1,4 +1,23 @@
 {
-  "components": ["CounterComponent"],
-  "systems": [{ "name": "IncrementSystem", "writeAccess": ["CounterComponent"] }]
+  "components": [
+    "PositionComponent",
+    "PlayerComponent",
+    "MovableComponent"
+  ],
+  "systems": [
+    {
+      "name": "MoveSystem",
+      "writeAccess": [
+        "PositionComponent"
+      ]
+    },
+    {
+      "name": "JoinGameSystem",
+      "writeAccess": [
+        "MovableComponent",
+        "PlayerComponent",
+        "PositionComponent"
+      ]
+    }
+  ]
 }
